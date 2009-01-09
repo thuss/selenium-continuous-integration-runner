@@ -1,0 +1,23 @@
+This is a basic test runner for running Selenese tests in a continuous integration server such as Hudson, Cruise Control, Bamboo, etc. It uses an Ant build.xml file with the Selenese Ant task to run the tests because almost every continuous integration server supports Ant.
+
+It's very basic but my impression is that everyone who runs Selenese Selenium tests from a continuous integration server cobbles their own solution together so I thought it would be helpful to have a starting point. If you plan to write your Selenium tests in a language such as Java, Ruby, PHP, etc. then you don't need this, it's only useful if you want to keep your tests in Selenese (which is the default format that the Selenium IDE saves in).
+
+Instructions
+------------
+You will need Java and Ant installed as pre-requisites for this to work
+
+shell> edit build.xml # You will need to set the Firefox path
+shell> ant run # if all is configured properly you should see firefox open, run the tests and then see "BUILD SUCCESSFUL" on the console
+
+Note: the lib/selenium-server.jar is the 1.0 beta 1 version patched to work with Firefox 3
+
+Troubleshooting
+---------------
+The most common problem with running selenium tests on a Linux (or unix like) server is that Selenium needs a display to open the Firefox window on and most continuous integration servers are started from an init.d script where the necessary $HOME and $DISPLAY variables are not set. Let's say you're using a VNCServer to create virtual display :1 for Selenium to run against. Then in the init.d script that starts your continuous integration server add "export DISPLAY=:1" and "export HOME=/home/someuser" (without the quotation marks). It's important to set HOME as well as DISPLAY because your .Xauthority file lives in $HOME which is what gives you permission to start an application like Firefox on the virtual display.
+
+Writing a new test
+------------------
+Install the Selenium IDE Firefox plugin: http://seleniumhq.org/download/ 
+
+Once you've done that open the test suite file test/MainTestSuite.html from Firefox by doing Tools -> Selenium IDE -> File -> Open Test Suite. Then click File -> New Test Case and go to work writing new tests. Note, build.xml overrides the base URL to www.google.com and you should replace that with the URL of your staging/QA/test instance that the continuous integration server should run the tests against.
+

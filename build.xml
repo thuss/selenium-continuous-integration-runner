@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="Run Test" default="run" basedir=".">
+  <property name="firefoxPath" value="/usr/lib/firefox-3.0.5/firefox" />
+  <property name="outputDir" value="output" />
+  <property name="testDir" value="test" />
+  <property name="libDir" value="lib" />
+
+  <path id="run">
+    <fileset dir="lib/">
+      <include name="*.jar" />
+    </fileset>
+  </path>
+  
+  <taskdef resource="selenium-ant.properties">
+    <classpath>
+      <pathelement location="lib/selenium-server.jar" />
+    </classpath>
+  </taskdef>
+  
+  <target name="run">
+    <delete>
+      <fileset dir="${outputDir}" includes="**/*.html" />
+    </delete>
+    <selenese suite="${testDir}/MainSiteTestSuite.html" 
+              results="${outputDir}/MainSiteTestSuiteResults.html" 
+              browser="*firefox ${firefoxPath}" 
+              multiWindow="false" 
+              timeoutInSeconds="900" 
+              startURL="http://www.google.com" />
+  </target>
+</project>
+
