@@ -2,6 +2,9 @@ This is a basic test runner for running Selenese tests in a continuous integrati
 
 It's very basic but my impression is that everyone who runs Selenese Selenium tests from a continuous integration server cobbles their own solution together so I thought it would be helpful to have a starting point. If you plan to write your Selenium tests in a language such as Java, Ruby, PHP, etc. then you don't need this, it's only useful if you want to keep your tests in Selenese (which is the default format that the Selenium IDE saves in).
 
+Email me at todd dot huss dot work at gmail dot com if you have a patch that adds functionality or fixes a bug. Or post a comment here:
+http://gabrito.com/post/selenium-continuous-integration-runner
+
 Instructions
 ------------
 You will need Java and Ant installed as pre-requisites for this to work
