@@ -12,7 +12,7 @@ You will need Java and Ant installed as pre-requisites for this to work
 shell> edit build.xml # You will need to set the Firefox path
 shell> ant run # if all is configured properly you should see firefox open, run the tests and then see "BUILD SUCCESSFUL" on the console
 
-Note: the lib/selenium-server.jar is the 1.0 beta 1 version patched to work with Firefox 3
+Note: the lib/selenium-server.jar is the 1.0.1 version from selenium RC
 
 Troubleshooting
 ---------------
